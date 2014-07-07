@@ -1,7 +1,10 @@
 class DockingStation
 
-	def initialize(bikes: [])
-		@bikes = bikes
+	DEFAULT_CAPACITY = 10
+
+	def initialize(bikes: [], capacity: DEFAULT_CAPACITY)
+		@capacity = capacity
+		@bikes    = bikes
 	end
 
 	def bikes
@@ -14,6 +17,10 @@ class DockingStation
 
 	def release bike
 		bikes.delete bike
+	end
+
+	def full?
+		bikes.count == @capacity
 	end
 
 end
