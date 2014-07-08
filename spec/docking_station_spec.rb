@@ -32,11 +32,13 @@ describe DockingStation do
 		expect{old_street.dock bike}.to raise_error(RuntimeError)
 	end
 
-	it 'knows which bikes are broken' do
+	# this test should be split in two but i'm too lazy :)
+	it 'knows which bikes are broken and which are not' do
 		working_bike = double :bike, broken?: false
 		broken_bike  = double :bike, broken?: true
-		old_street = DockingStation.new(bikes: [working_bike, broken_bike])
+		old_street   = DockingStation.new(bikes: [working_bike, broken_bike])
 		expect(old_street.broken_bikes).to eq [broken_bike]
+		expect(old_street.available_bikes).to eq [working_bike]
 	end
 
 end

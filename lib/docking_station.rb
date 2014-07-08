@@ -28,4 +28,8 @@ class DockingStation
 		bikes.select { |bike| bike.broken? }
 	end
 
+	def available_bikes
+		bikes - broken_bikes
+	end
+
 end
