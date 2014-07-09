@@ -6,6 +6,10 @@ module BikeContainer
 		@bikes
 	end
 
+	def capacity
+		@capacity
+	end
+
 	def dock bike
 		raise 'Sorry! No slots available' if full?
 		bikes << bike
