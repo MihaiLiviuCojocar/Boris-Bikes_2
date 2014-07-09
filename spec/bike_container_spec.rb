@@ -21,14 +21,14 @@ shared_examples 'a bike container' do
 	end	
 
 	it 'knows when it is full' do
-		(DockingStation::DEFAULT_CAPACITY - 1).times { container.dock bike }
+		(container.capacity - 1).times { container.dock bike }
 		expect(container.full?).to be false
 		container.dock bike
 		expect(container.full?).to be true
 	end
 
 	it 'should not allow a bike to be docked if max capacity has been reached' do
-		(DockingStation::DEFAULT_CAPACITY).times { container.dock bike }
+		(container.capacity).times { container.dock bike }
 
 		expect{container.dock bike}.to raise_error(RuntimeError)
 
